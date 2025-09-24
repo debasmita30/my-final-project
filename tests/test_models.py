@@ -28,3 +28,22 @@ class TestProductModel(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+
+def test_delete_product(self):
+    """
+    Test deleting a product from the database
+    """
+    # Save the fake product
+    self.product.save()
+
+    # Delete the product
+    self.product.delete()  # adjust method according to your ORM
+
+    # Try to fetch the product again
+    deleted_product = Product.get_by_id(self.product.id)
+
+    # Assert that the product no longer exists
+    self.assertIsNone(deleted_product)
+
